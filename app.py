@@ -8,7 +8,7 @@ Azure App Service Entry Point
 This file is required for Azure deployment (Azure looks for app.py)
 
 Updated: 2024-12-31 - Simplified deployment
-Deployment triggered: latest
+Deployment triggered: latest update
 """
 
 from fastapi import FastAPI, HTTPException
