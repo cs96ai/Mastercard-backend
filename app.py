@@ -11,10 +11,33 @@ Updated: 2024-12-31 - Simplified deployment
 Deployment triggered: latest
 """
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from datetime import datetime
+import traceback
+import sys
 
-app = FastAPI(title="Mastercard Fraud Analysis API")
+app = FastAPI(title="Mastercard Fraud Analysis API", debug=True)
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request, exc):
+    """Global exception handler to show detailed error information"""
+    error_detail = {
+        "error": str(exc),
+        "error_type": type(exc).__name__,
+        "traceback": traceback.format_exc(),
+        "url": str(request.url),
+        "method": request.method
+    }
+
+    # Log the error
+    print(f"ERROR: {error_detail}", file=sys.stderr)
+
+    # Return detailed error in development
+    return {
+        "status": "error",
+        "message": "Internal Server Error",
+        "details": error_detail
+    }
 
 @app.get("/")
 async def root():
