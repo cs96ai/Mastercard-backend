@@ -9,6 +9,8 @@ FastAPI backend providing AI-powered financial analysis endpoints:
 - Merchant insights narrative generation
 - Customer upgrade recommendations
 - First-party fraud detection (friendly fraud)
+
+Last updated: 2024-12-31
 """
 
 from fastapi import FastAPI, HTTPException
