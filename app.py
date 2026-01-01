@@ -6,6 +6,8 @@ Phone: 416-839-9499
 
 Azure App Service Entry Point
 This file is required for Azure deployment (Azure looks for app.py)
+
+Updated: 2024-12-31 - Simplified deployment
 """
 
 from fastapi import FastAPI
