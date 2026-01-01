@@ -119,7 +119,7 @@ Format your response appropriately for the {audience} audience."""
 
 @app.get("/")
 async def root():
-    return {"message": "Mastercard Fraud Analysis API", "status": "running"}
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 @app.get("/api/heartbeat")
 async def heartbeat():
