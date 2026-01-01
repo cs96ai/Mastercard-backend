@@ -8,10 +8,18 @@ Azure App Service Entry Point
 This file is required for Azure deployment (Azure looks for app.py)
 """
 
-from main import app
+from fastapi import FastAPI
+from datetime import datetime
 
-# Azure App Service will look for 'app' variable
-# The actual FastAPI application is defined in main.py
+app = FastAPI(title="Mastercard Fraud Analysis API")
+
+@app.get("/")
+async def root():
+    return {
+        "message": "Mastercard API",
+        "status": "running",
+        "datetime": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
 
 if __name__ == "__main__":
     import uvicorn
